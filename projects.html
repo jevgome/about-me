@@ -1,32 +1,104 @@
-
 <!-- =========================
+ <!-- =========================
  FILE: projects.html
+ LIGHT MODE + CASE STUDY LAYOUT
 ========================= -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jeth Gomez | Projects</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
   <style>
-    body{margin:0;font-family:Inter,sans-serif;background:#0b0f1a;color:#e5e7eb;}
-    header{display:flex;justify-content:space-between;padding:15px 40px;position:sticky;top:0;background:rgba(10,12,20,0.7);backdrop-filter:blur(10px);}
-    nav a{color:#9ca3af;margin:0 10px;text-decoration:none;}
-    nav a:hover{color:white;}
+    :root{
+      --bg:#f8fafc;
+      --text:#0f172a;
+      --muted:#64748b;
+      --accent:#4f46e5;
+      --border:#e2e8f0;
+    }
 
-    .container{padding:80px 15%;}
+    *{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
 
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
+    body{font-family:Inter,sans-serif;background:var(--bg);color:var(--text);}
 
-    .card{background:#111827;padding:20px;border-radius:16px;transition:0.3s;}
-    .card:hover{transform:translateY(-5px);}
+    header{
+      position:fixed;top:0;width:100%;
+      display:flex;justify-content:space-between;align-items:center;
+      padding:18px 40px;
+      background:rgba(255,255,255,0.75);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--border);
+      z-index:100;
+    }
 
-    h2{color:#4f46e5;}
+    nav a{margin-left:18px;text-decoration:none;color:var(--muted);font-weight:500;}
+    nav a:hover{color:var(--text);}
+
+    .container{padding:140px 15% 80px;}
+
+    h1{font-size:54px;letter-spacing:-1px;margin-bottom:20px;}
+    p{font-size:18px;line-height:1.7;color:var(--muted);}
+
+    .intro{max-width:700px;margin-bottom:80px;opacity:0;transform:translateY(20px);transition:1s ease;}
+
+    /* CASE STUDY SECTIONS */
+    .case{
+      padding:80px 0;
+      border-top:1px solid var(--border);
+      opacity:0;
+      transform:translateY(40px);
+      transition:1s ease;
+    }
+
+    .case:first-of-type{border-top:none;}
+
+    .case h2{
+      font-size:34px;
+      margin-bottom:10px;
+    }
+
+    .meta{
+      font-size:14px;
+      color:var(--muted);
+      margin-bottom:20px;
+    }
+
+    .block{
+      margin-top:25px;
+      max-width:750px;
+    }
+
+    .block h3{
+      font-size:18px;
+      margin-bottom:8px;
+      color:var(--text);
+    }
+
+    .image-placeholder{
+      width:100%;
+      height:320px;
+      background:linear-gradient(135deg,#e2e8f0,#f1f5f9);
+      border-radius:16px;
+      margin-top:25px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#94a3b8;
+      font-size:14px;
+      border:1px solid var(--border);
+    }
+
+    .show{opacity:1 !important;transform:translateY(0) !important;}
   </style>
 </head>
+
 <body>
+
 <header>
-  <h2>Projects</h2>
+  <div><strong>Jeth Gomez</strong></div>
   <nav>
     <a href="index.html">About</a>
     <a href="resume.html">Resume</a>
@@ -35,27 +107,174 @@
 </header>
 
 <div class="container">
-  <h2>My Work</h2>
-  <p>Showcase of robotics, engineering, and software projects.</p>
 
-  <div class="grid">
-
-    <div class="card">
-      <h3>Project 1</h3>
-      <p>Description coming soon.</p>
-    </div>
-
-    <div class="card">
-      <h3>Project 2</h3>
-      <p>Description coming soon.</p>
-    </div>
-
-    <div class="card">
-      <h3>Project 3</h3>
-      <p>Description coming soon.</p>
-    </div>
-
+  <div class="intro" id="intro">
+    <h1>Projects</h1>
+    <p>
+      A selection of engineering and software projects focused on robotics, systems design,
+      and problem solving. Each project highlights my approach to building, testing, and
+      iterating on complex systems.
+    </p>
   </div>
+
+  <!-- PROJECT 1 -->
+  <section class="case reveal">
+    <h2>UConn Schedule Builder</h2>
+    <div class="meta">Role: Solo Developer • Tools: TypeScript, HTML, CSS, Rust • Year: 2025 - Ongoing</div>
+
+    <div class="block">
+      <h3>Overview</h3>
+      <p>
+        A web-based schedule builder designed to help University of Connecticut students easily
+        create and visualize class schedules. The tool allows users to explore different course
+        combinations and build conflict-free schedules in a clean, intuitive interface.
+        The schedule generation has a three step pipeline: (1) Collecting class data, (2)
+        Applying filters and generating schedules, (3) Displaying data on the webpage.
+        I decided to have each phase written in a different programming language to maximize
+        the strengths and weaknesses of each with respect to what I needed in each phase.
+        I created python scripts to scrape all course data and store them locally for easy access.
+        I generated the schedules in Rust to ensure that this step is as fast as possible to 
+        avoid any delay on the user side.
+        I wrap all of this backend code under a TypeScript frontend, to ensure type safety while
+        developing, as well as easy editing of the UI/UX.
+      </p>
+      <br>
+      <p>
+        The goal of this project is to create a tool that anyone can use, and to make it as accessible
+        as possible. I am working on developing keyboard shortcuts to make the experience quicker
+        for those who are interested, and I plan on adding more capabilities in the future.
+      </p>
+      <br>
+      <p>
+        I designed and developed the full application, including the UI layout, scheduling logic,
+        and interactive features. I focused on usability, ensuring students could quickly generate
+        and compare schedules without friction.
+      </p>
+      <br>
+      <p>
+        The project demonstrates my ability to build practical tools that solve real problems.
+        It highlights my skills in front-end development, logical problem solving, and creating
+        user-focused engineering solutions.
+      </p>
+    </div>
+
+    <div style="margin-top:40px;">
+      <p style="margin-bottom:10px; font-weight:500;">Live Preview</p>
+
+      <iframe 
+        src="https://jevgome.github.io/uconn-schedule-builder/"
+        width="100%"
+        height="700"
+        style="
+          border-radius:18px;
+          border:1px solid #e2e8f0;
+          box-shadow:0 20px 40px rgba(0,0,0,0.08);
+        "
+        loading="lazy">
+      </iframe>
+    </div>
+
+    <div class="block">
+          <h3>View full project <a href="https://jevgome.github.io/uconn-schedule-builder/" target="_blank">
+        here
+          </a></h3>
+    </div>
+  </section>
+
+  <!-- PROJECT 2 -->
+  <section class="case reveal">
+    <h2>N.E.A.T On Scratch</h2>
+    <div class="meta">Role: Solo Developer • Tools: Scratch, Machine Learning • Year: 2024</div>
+
+    <div class="block">
+      <h3>Overview</h3>
+      <p>
+            A machine learning application built in Scratch. This project is based off of the NEAT 
+            (Neuroevolution of Advanced Topologies) algorithm, a simple genetic algorithm designed to gradually learn the correct movements
+            based on a given input. In this case, I chose Flappy Bird, a simple game with relatively few inputs and only one button to press: jump.
+            I chose to make this simulation in Scratch because there are no easily obtainable libraries of code in the website.
+            I needed to make everything myself, with all of the ideas coming from my head.
+
+            In this case, each bird has its own brain, initially random, that tells it when to jump based on certain data about its position in the world, as well as the position of the closest pipe.
+            All birds of a certain generation are simulated at the same time, and the brain of the best bird will be recorded and set as the main example for the next generation.
+            During the new generation, all of these birds will inherit the brain of the best bird, only slightly mutated. This allows the opportunity for a more ideal brain to be created.
+            This process then repeats until at least one bird reaches a score of 100. Then the game repeats.
+      </p>
+      <br>
+      <p>
+            I was the sole developer of this game. Since I created it in Scratch, I did not use any libraries to speed up the development process.
+            The goal of this project was to think conceptually on how code worked, and show how every bit of data is manipulated behind the scenes.
+            This project gave me a good understanding on the basics of machine learning and gave me key experience in creating my own library for a project.
+      </p>
+
+    </div>
+
+    <div style="padding:0; overflow:hidden; margin-top:30px">
+      <p style="margin-bottom:10px; font-weight:500;">Live Preview</p>
+      <iframe 
+        src="https://turbowarp.org/834478216/embed"
+        width="100%"
+        height="800"
+        frameborder="0"
+        scrolling="no"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </section>
+
+  <!-- PROJECT 3 -->
+  <section class="case reveal">
+    <h2>FTC Robotics</h2>
+    <div class="meta">Role: Captain/Discipline Chief of Programming/Mentor • Tools: Java • Year: 2020 - 2026</div>
+
+    <div class="block">
+      <h3>Overview</h3>
+      <p>
+            I was involved in the First Tech Challenge robotics league for my high school.
+            In ths league, we had to create 18"x18" robots to compete head-to-head in the game designed for that year.
+            Each game was composed of a driver-operated period and an autonomous period, in which robots conducted
+            pre-programmed moves to score points.
+            Our school consisted of 5 individual teams. While we sometimes worked together and shared tips on the build/design process,
+            the majority of the builds were done separately.
+            I served as the Discipline Chief of Programming, where I taught new programmers from all 5 teams how to program the robots.
+            Specifcally, I helped several new programmers learn Roadrunner, a motion-planning framework that proved 
+            especially helpful for the autonomous period of the game. Those new programmers then went on to take 
+            over as Discipline Chief of Programming once I graduated.
+            During my senior year, I was elected captain of all 5 teams. I was tasked with making sure that all teams in our school
+            had the proper help and resources, and I provided them with all the knowledge that I gained throughout my time there.
+            After graduating high school, I went back as a mentor to further help the team with programming, working closely with the programming team.
+      </p>
+      <br>
+      <p>
+            During my time on the team, we received 5 design awards in the state of Connecticut, and were finalist in the 2024 FTC State Championship.
+            As the sole programmer of my team and the leader, my autonomous program allowed our team to score high in the rankings,
+            and all of our robot designs were based on my sketches and 3d models.
+      </p>
+      <br>
+    </div>
+
+    <img src="images/robot.jpg" style="height:650px;" class="photo" id="robo" alt="Robot Photo">
+  </section>
+
 </div>
+
+<script>
+  window.addEventListener("load", () => {
+    document.getElementById("intro").classList.add("show");
+  });
+
+  const items = document.querySelectorAll(".reveal");
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add("show");
+      }
+    });
+  }, { threshold: 0.15 });
+
+  items.forEach(el => observer.observe(el));
+</script>
+
 </body>
 </html>
+

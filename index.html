@@ -1,48 +1,134 @@
 <!-- =========================
  FILE: index.html (ABOUT PAGE)
+ LIGHT MODE PORTFOLIO
 ========================= -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Jeth Gomez | About</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
   <style>
-    body{margin:0;font-family:Inter,sans-serif;background:#0b0f1a;color:#e5e7eb;}
-    header{display:flex;justify-content:space-between;align-items:center;padding:15px 40px;position:sticky;top:0;background:rgba(10,12,20,0.7);backdrop-filter:blur(10px);}
-    nav a{color:#9ca3af;margin:0 10px;text-decoration:none;}
-    nav a:hover{color:white;}
-
-    .container{padding:80px 15%;}
-
-    .profile{
-      display:flex;
-      gap:40px;
-      align-items:center;
-      margin-bottom:40px;
+    :root{
+      --bg:#f8fafc;
+      --text:#0f172a;
+      --muted:#64748b;
+      --accent:#4f46e5;
+      --border:#e2e8f0;
     }
 
-    .profile-img{
-      width:180px;
-      height:180px;
-      border-radius:16px;
-      background:linear-gradient(135deg,#4f46e5,#22c55e);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:white;
-      font-weight:600;
-      text-align:center;
-      padding:10px;
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
     }
 
-    .card{background:#111827;padding:20px;border-radius:16px;}
+    body{
+      font-family:Inter, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+
+    header{
+      position:fixed;
+      top:0;
+      width:100%;
+      padding:18px 40px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      background:rgba(255,255,255,0.75);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--border);
+      z-index:100;
+    }
+
+    nav a{
+      margin-left:18px;
+      text-decoration:none;
+      color:var(--muted);
+      font-weight:500;
+    }
+
+    nav a:hover{
+      color:var(--text);
+    }
+
+    .container{
+      padding:140px 15% 80px;
+    }
+
+    .hero{
+      display:flex;
+      align-items:center;
+      gap:60px;
+    }
+
+    .photo{
+      width:220px;
+      height:220px;
+      border-radius:18px;
+      object-fit:cover;
+      border:1px solid var(--border);
+      box-shadow:0 20px 50px rgba(0,0,0,0.08);
+      transform:translateY(20px);
+      opacity:0;
+      transition:1s ease;
+    }
+
+    .text{
+      max-width:700px;
+      transform:translateY(20px);
+      opacity:0;
+      transition:1s ease;
+    }
+
+    h1{
+      font-size:54px;
+      letter-spacing:-1px;
+      margin-bottom:10px;
+    }
+
+    p{
+      font-size:18px;
+      line-height:1.7;
+      color:var(--muted);
+    }
+
+    .section{
+      margin-top:120px;
+      padding-top:60px;
+      border-top:1px solid var(--border);
+      opacity:0;
+      transform:translateY(30px);
+      transition:1s ease;
+    }
+
+    .section h2{
+      font-size:28px;
+      margin-bottom:20px;
+    }
+
+    .show{
+      opacity:1 !important;
+      transform:translateY(0) !important;
+    }
+
+    .big-gap{
+      height:60px;
+    }
+
   </style>
 </head>
+
 <body>
+
 <header>
-  <h2>Jeth Gomez</h2>
+  <div><strong>Jeth Gomez</strong></div>
   <nav>
     <a href="index.html">About</a>
     <a href="resume.html">Resume</a>
@@ -52,26 +138,74 @@
 
 <div class="container">
 
-  <div class="profile">
-    <!-- IMAGE UPLOAD SPOT -->
-    <div class="profile-img">
-      Add Your Photo Here
-    </div>
+  <div class="hero">
+    <img src="images/profile.jpg" class="photo" id="photo" alt="Profile Photo">
 
-    <div>
+    <div class="text" id="text">
       <h1>About Me</h1>
       <p>
         My name is Jeth Gomez. I am a second year student at the University of Connecticut,
-        double majoring in Computer Science and Engineering and Mechanical Engineering. I am
-        very interested in robotics and want to combine my love for software with my
-        problem-solving mechanical knowledge and curiosity to create robots and projects that
-        help make the world a better place.
+        double majoring in Computer Science and Engineering and Mechanical Engineering.
+        I am very interested in robotics and want to combine my love for software with
+        my problem-solving mechanical knowledge and curiosity to create robots and
+        projects that help make the world a better place.
       </p>
     </div>
   </div>
 
+  <div class="section reveal">
+    <h2>Focus</h2>
+    <p>
+       As humans, we create tools to make our lives easier, and push our capabilites further than what we could do previously. We stay curious, and we are always on the hunt for new knowledge. To be that much closer to understanding the universe.
+    </p>
+    <br>
+    <p>
+        This is my focus. I am dedicated to creating, designing, and engineering a path to a better tommorow. As a kid, I have always been
+        interested in automation. From learning about the Rube Goldberg Machine to seeing my first robot, I was fascinated by the idea that
+        you can make something that does tasks for you. Going into Computer Science, this was what I was looking forward to the most.
+        Creating software that automates simple but tedious tasks, and making the human experience easier.
+    </p>
+  </div>
+
+  <div class="section reveal">
+    <h2>Goal</h2>
+    <p>
+          My goal is to leave a lasting impression on the world. Even if they do not know my name or face, 
+          I hope that one day I will make a positive contribution to society. I would like to work in a field that not only
+          pushes the boundaries of technology, but also gives back to the community by creating products that are genuinely helpful
+          to the people around us.
+    </p>
+  </div>
+
+  <div class="section reveal">
+    <h2>Interests</h2>
+    <p>
+      Robotics, embedded systems, mechanical design, AI-assisted engineering,
+      and building systems that interact with the physical world.
+    </p>
+  </div>
+
 </div>
+
+<script>
+  window.addEventListener("load", () => {
+    document.getElementById("photo").classList.add("show");
+    document.getElementById("text").classList.add("show");
+  });
+
+  const items = document.querySelectorAll(".reveal");
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add("show");
+      }
+    });
+  }, { threshold: 0.15 });
+
+  items.forEach(el => observer.observe(el));
+</script>
+
 </body>
 </html>
-
 
